@@ -292,7 +292,6 @@ public abstract class Personaje {
     }
 
     public int realizarTurno(Personaje enemigo) {
-        //depue
         int opcion;
         int turno = 0;
 
@@ -312,9 +311,9 @@ public abstract class Personaje {
                 accEspesial(enemigo);
                 break;
             case 3:
-                setArm((getArm() / 10) * 2);
-                setRes((getRes() / 10) * 2);
-                System.out.println(nombre + " adopta una postura defensiva.. \nSus stats mejoran:\n\t" + getArm() + "\n\t" + getRes());
+                setArm((int) (getArm() * 0.2));
+                setRes((int) (getRes() * 0.2));
+                System.out.println(nombre + " adopta una postura defensiva.. \nSus stats mejoran:\n\t· Armadura: " + getArm() + "\n\t· Resistencia: " + getRes());
                 break;
             case 4:
                 System.out.println(nombre + " pasa el turno.");

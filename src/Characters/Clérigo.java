@@ -44,11 +44,7 @@ public class Clérigo extends Creyente{
 
         System.out.println(coquetoC());
 
-        System.out.println("¿Qué tipo de conjuro quiere hacer? ⋆˙⟡ — " +
-                "\n\t1. Sanación" +
-                "\n\t2. Rezo sagrado" +
-                "\n\t3. Cólera divina");
-        printDetallito();
+        menusito("¿Qué tipo de conjuro quiere hacer?", new String[]{"Sanación", "Rezo sagrado", "Cólera divina"}, 2);
         opcion = scan.nextInt();
 
         switch (opcion){
