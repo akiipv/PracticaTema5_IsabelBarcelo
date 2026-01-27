@@ -65,19 +65,20 @@ public class Mago extends Personaje {
 
         switch (opcion) {
             case 1:
-                dañoConjuro = mag * 0.70;
+                dañoConjuro = (int) (mag * 0.70);
                 enemigo.setPv(enemigo.getPv() - (int)dañoConjuro);
-                System.out.println(getNombre() + " lanza Bola de fuego y hace " + dañoConjuro + " de daño a " + enemigo.getNombre() + ". Dejándole a " + enemigo.getPv() + " de vida.." + details(2));
+                System.out.println(this.getNombre() + " lanza Bola de fuego y hace " + dañoConjuro + " de daño a " + enemigo.getNombre() + ". Dejándole a " + enemigo.getPv() + " de vida.." + details(2));
                 break;
             case 2:
                 setArm(getArm() + (int)(mag * 0.5));
                 setRes(getRes() + (int)(mag * 0.5));
-                System.out.println(getNombre() + " activa Escudo Arcano: " + toString() + details(2));
+                System.out.println("Escudo Arcano se manifiesta alrededor de " + getNombre() + ".. aumentando su resistencia mágica y su armadura.." + details(5));
                 break;
             case 3:
-                dañoConjuro = mag * 0.30;
+                dañoConjuro = (int) (mag * 0.30);
                 enemigo.setPv(enemigo.getPv() - (int)dañoConjuro);
-                System.out.println("Un viento causa un 30% de sus puntos de magia como daño a todos los enemigos presentes.." + details(2));
+                System.out.println(this.getNombre() + " lanza céfiro, que se desata sobre " + enemigo.getNombre() + ".. causándole " + dañoConjuro + " de daño mágico.." + details(4));
+                printPv(enemigo);
                 break;
             case 4:
                  setVel(super.getVel() + mag);
