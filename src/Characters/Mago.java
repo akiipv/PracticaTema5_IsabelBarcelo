@@ -49,13 +49,9 @@ public class Mago extends Personaje {
         System.out.println(getNombre() + ", ¡ha subido de nivel!\n\t" + toString());
     }
 
-    /**
-     * todo cambiar pq no queda aesthetic
-     */
-
     public void lanzarConjuro(Personaje enemigo) {
 
-        setTipoAtaque("magico");
+        this.setTipoAtaque("magico");
         int dañoConjuro = 0;
         int opcion;
         Scanner scan = new Scanner(System.in);
@@ -70,13 +66,13 @@ public class Mago extends Personaje {
                 case 1:
                     dañoConjuro = (int) (mag * 0.70);
                     enemigo.defensa(dañoConjuro, this.getTipoAtaque());
-                    System.out.println(this.getNombre() + " lanza \033[0;4mbola de fuego\033[0;0m y hace " + enemigo.defender(dañoConjuro, this.getTipoAtaque()) + " de daño a " + enemigo.getNombre() + details(2));
+                    System.out.println(this.getNombre() + " " + anderlain("bola de fuego") + " y hace " + enemigo.defender(dañoConjuro, this.getTipoAtaque()) + " de daño a " + enemigo.getNombre() + details(2));
                     printPv(enemigo);
                     break;
                 case 2:
                     setArm(getArm() + (int) (mag * 0.5));
                     setRes(getRes() + (int) (mag * 0.5));
-                    System.out.println("Un " + anderlain("escudo arcano") + " se manifiesta alrededor de " + this.getNombre() + ".. aumentando su armadura y resistencia mágica.." + details(5) + "\n\t· Armadura: " + this.getArm() + "\n\t· Resistencia mágica: " + this.getRes() + "\n");
+                    System.out.println("Un " + anderlain("escudo arcano") + " se manifiesta alrededor de " + this.getNombre() + ".. aumentando su armadura y resistencia mágica.." + details(5) + "\n\t· Armadura: " + this.getArm() + "\n\t· Resistencia mágica: " + this.getRes());
                     break;
                 case 3:
                     dañoConjuro = (int) (mag * 0.30);

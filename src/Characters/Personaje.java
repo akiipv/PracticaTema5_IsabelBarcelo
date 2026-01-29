@@ -245,16 +245,16 @@ public abstract class Personaje {
 
                 case "Pinchos":
                     setPv(getPv() - perjuicioT);
-                    System.out.println("\n\t" + anderlain("Estacas afiladas") + " salen de las superficies cercanas y atraviesan a " + getNombre() + " por " + perjuicioT + " puntos de daño..");
+                    System.out.println("\n\t" + anderlain("Estacas afiladas") + " salen de las superficies cercanas y atraviesan a " + getNombre() + " por " + perjuicioT + " puntos de daño..\n");
                     printPv(this);
                     break;
                 case "Brea":
                     setArm(getArm() - perjuicioT);
-                    System.out.println("\n\t" + anderlain("Aceite viscoso") + " cae sobre " + getNombre() + ", arruinando su armadura..\n\t· Armadura: " + getArm());
+                    System.out.println("\n\t" + anderlain("Aceite viscoso") + " cae sobre " + getNombre() + ", arruinando su armadura..\n\t· Armadura: " + getArm()+ "\n");
                     break;
                 case "Serpientes":
                     setAtq(getAtq() - perjuicioT);
-                    System.out.println("\n\tUn " + anderlain("nido de víboras") + " aparece frente a " + getNombre() + ". La visión es tan terrorífica que pierde las fuerza para atacar..\n\t· Ataque" + getAtq());
+                    System.out.println("\n\tUn " + anderlain("nido de víboras") + " aparece frente a " + getNombre() + ". La visión es tan terrorífica que pierde las fuerza para atacar..\n\t· Ataque" + getAtq() + "\n");
                     break;
             }
         } else {

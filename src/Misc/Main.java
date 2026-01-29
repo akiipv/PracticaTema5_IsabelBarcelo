@@ -7,11 +7,11 @@ import Misc.GameTest;
 
 public class Main {
     public static void main(String[] args) {
-        // Que luego dices que no pruebo lo que hago, hater 🥀
+        // Coquetería pura, ojalá que cuando lo pruebe no se cague encima
 
-        Personaje Isa = new Paladin("Isa", 100, 10, 10, 10, 10, 10, 10);
-        Personaje Iván = new Guerrero("Iván", 100, 10, 10, 10, 10, 10, false);
+        Personaje p1 = new Coquette("Isa", 100, 10, 10, 10, 10, 10, 90);
+        Personaje p2 = new Cazador("Alejandrito", 100, 10, 10, 10, 10, 10, "felino", "Isabelita");
 
-        Combate.combatir(Isa, Iván);
+        Combate.combatir(p1, p2);
     }
 }

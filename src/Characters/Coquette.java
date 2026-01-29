@@ -1,0 +1,124 @@
+package Characters;
+
+import java.util.Scanner;
+
+public class Coquette extends Personaje {
+    private int coqueteria;
+
+    public Coquette() {
+        super();
+        coqueteria = 0;
+    }
+
+    public Coquette(String nombre, int pv, int atq, int arm, int nivel, int vel, int res, int coqueteria) {
+        super(nombre, pv, atq, arm, nivel, vel, res);
+        setCoqueteria(coqueteria);
+
+    }
+
+    public int getCoqueteria() {
+        return coqueteria;
+    }
+
+    public void setCoqueteria(int coqueteria) {
+        this.coqueteria = coqueteria;
+    }
+
+    @Override
+    public void subirNivel() {
+        if (prob(50))
+            setPv(getPv() + 1);
+
+        if (prob(85))
+            setAtq(getAtq() + 2);
+
+        if (prob(50))
+            setArm(getArm() + 1);
+
+        if (prob(85))
+            setRes(getRes() + 2);
+
+        if (prob(50))
+            setVel(getVel() + 2);
+
+
+        setNivel(getNivel() + 1);
+        System.out.println(getNombre() + ", ¡ha subido de nivel!\n\t" + toString());
+    }
+
+    public void Corazon(Personaje enemigo) {
+        this.setTipoAtaque("magico");
+        int dañoCoquette = 0;
+        int opcion;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println(coquetoCQ());
+
+        do {
+            menusito("¿Qué tipo de conjuro quiere hacer?", new String[]{"Robar corazón", "Mandar besitos", "Admirarse en un espejo", "No, yo más"}, 2);
+            opcion = scan.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    dañoCoquette = Integer.MAX_VALUE;
+                    this.setTipoAtaque("fisico");
+                    enemigo.defensa(dañoCoquette, this.getTipoAtaque());
+                    System.out.println(this.getNombre() + " le ha " + anderlain("robado el corazón") + " a " + enemigo.getNombre() + " matándolo directamente con su coquetería.." + details(2));
+                    printPv(enemigo);
+                    break;
+                case 2:
+                    setRes(getRes() + (int) (coqueteria * 0.85));
+                    System.out.println(this.getNombre() + " le " + anderlain("manda besitos") + " a " + enemigo.getNombre() + ".. bajándole la resistencia mágica con su coquetería.." + details(5) + "\n\t· Resistencia mágica: " + this.getRes());
+                    break;
+                case 3:
+                    dañoCoquette = (int) (coqueteria * 0.90);
+                    this.setAtq(getAtq() + dañoCoquette);
+                    System.out.println(this.getNombre() + " se " + anderlain("admira en el espejo") + ", reforzando su confianza y aumentando su ataque.. \n\t· Ataque: " + this.getAtq() + details(5));
+                    break;
+                case 4:
+                    dañoCoquette = enemigo.getAtq() * 2;
+                    enemigo.defensa(dañoCoquette, this.getTipoAtaque());
+                    System.out.println(this.getNombre() + " ama más a " + enemigo.getNombre() + " por lo que hace el doble de daño que él.." + details(2));
+                    printPv(enemigo);
+            }
+        } while (opcion > 4);
+    }
+
+    @Override
+    public void accEspesial(Personaje enemigo) {
+        printPerezita("\uD835\uDC6A\uD835\uDC90\uD835\uDC93\uD835\uDC82\uD835\uDC9B\uD835\uDC90\uD835\uDC8F \uD835\uDC84\uD835\uDC90\uD835\uDC92\uD835\uDC96\uD835\uDC86\uD835\uDC95\uD835\uDC90..");
+        Corazon(enemigo);
+    }
+
+    @Override
+    public String toString() {
+        String resultado = "Cargando datos del coquette.. ૮ ․ ․ ྀིა " +
+                "\n\t· Nombre: " + getNombre() +
+                "\n\t· Vida: " + getPv() +
+                "\n\t· Ataque: " + getAtq() +
+                "\n\t· Armadura: " + getArm() +
+                "\n\t· Velocidad: " + getVel() +
+                "\n\t· Resistencia mágica: " + getRes() +
+                "\n\t· Coquetería: " + getCoqueteria() +
+                "\n\t· Nivel: " + getNivel();
+        return coquetudo() + "\n\n" + resultado;
+    }
+
+    public String coquetoCQ() {
+        return "⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⢤⣺⡟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠈⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⣄⡀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⣀⣀⠀⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡿⠃⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⣼⠋⠻⢿⣤⢿⠏⠀⠉⣟⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⣿⡄⠀⠀⠁⠀⠀⠀⢀⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠸⣧⠀⠀⠀⠀⠀⣄⡾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⡂⠀⠀⠀⠀⠀⠐⣷⢀⣀⣴⡿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⡤⡄⠀⠀⠀⠀\n" +
+                "⣤⣧⡤⠀⠀⠀⠀⠀⠀⠘⠘⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢼⣿⠋⠉⡇⣇⣤⣤⣤⡀\n" +
+                "⠀⢲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢻⡇⠀⠀⣷⡟⠁⠀⢸⡇\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠐⠃⠀⠀⢀⣼⠇\n" +
+                "⠀⠀⠀⠀⠀⠀⢠⡶⢢⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⢸⡇⠀⣀⣤⣤⣶⠧⠃⠀\n" +
+                "⠀⠀⠀⢠⡖⠲⣿⠁⣸⠇⠀⠀⠀⠀⠀⡠⣧⠆⠀⠀⠀⠀⠈⠛⠳⠕⠛⠁⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠐⠿⡤⢤⣠⡿⠀⠀⠀⠀⠀⠀⠀⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n";
+    }
+}
