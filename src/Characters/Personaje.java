@@ -136,41 +136,37 @@ public abstract class Personaje {
     }
 
     public int getPv() {
-
         return pv;
     }
 
     public int getAtq() {
-
         return atq;
     }
 
     public int getArm() {
-
         return arm;
     }
 
     public int getNivel() {
-
         return nivel;
     }
 
     public void beberPocion(int pocion) {
-        if (pv <= 30) {
-            pv += pocion;
-            System.out.println("\n" + getNombre() + ", se ha bebido una poción.. su vida sube ahora es " + pv);
+        if (getPv() <= 30) {
+            setPv(getPv() + pocion);
+            System.out.println("\n" + getNombre() + ", se ha bebido una poción.. su vida sube ahora es " + getPv());
         }
     }
 
     public void inspirar(int cantidad, String tipo) {
         switch (tipo) {
             case "ataque":
-                atq += cantidad;
-                System.out.println("\n" + getNombre() + ", se ha inspirado.. su ataque sube ahora es " + atq);
+                setAtq(getAtq() + cantidad);
+                System.out.println("\n" + getNombre() + ", se ha inspirado.. su ataque sube ahora es " + getAtq() + details(2));
                 break;
             case "defensa":
-                arm += cantidad;
-                System.out.println("\n" + getNombre() + ", se ha inspirado.. su defensa sube ahora es " + arm);
+                setArm(getArm() + cantidad);
+                System.out.println("\n" + getNombre() + ", se ha inspirado.. su armadura sube ahora es " + getArm() + details(2));
                 break;
             default:
                 System.err.println("Error. Introduzca ataque o defensa.");
@@ -249,31 +245,25 @@ public abstract class Personaje {
 
                 case "Pinchos":
                     setPv(getPv() - perjuicioT);
-                    System.out.println("Estacas afiladas salen de las superficies cercanas y " + "atraviesan a " + nombre + " por " + perjuicioT + " puntos de daño.. ahora su vida es de: " + pv + ".");
+                    System.out.println("\n\tEstacas afiladas salen de las superficies cercanas y " + "atraviesan a " + getNombre() + " por " + perjuicioT + " puntos de daño.. ahora su vida es de: " + pv + ".");
                     break;
                 case "Brea":
                     setArm(getArm() - perjuicioT);
-                    System.out.println("Aceite viscoso cae de pronto sobre " + nombre + ", impidiéndole moverse con libertad.. ahora su defensa es de: " + arm + ".");
+                    System.out.println("\n\tAceite viscoso cae de pronto sobre " + getNombre() + ", impidiéndole moverse con libertad.. ahora su armadura es de: " + getArm() + ".");
                     break;
                 case "Serpientes":
                     setAtq(getAtq() - perjuicioT);
-                    System.out.println("Un nido de víboras aparece frente a " + nombre + ". La visión es tan terrorífica que pierde las ganas de continuar.. ahora su ataque es de: " + atq + ".");
+                    System.out.println("\n\tUn nido de víboras aparece frente a " + getNombre() + ". La visión es tan terrorífica que pierde las ganas de continuar.. ahora su ataque es de: " + atq + ".");
                     break;
             }
-
         } else {
-
-            System.out.println("Afortunadamente, ¡" + nombre + " escapó de la trampa indemne!");
+            System.out.println("\n\tAfortunadamente, ¡" + getNombre() + " escapó de la trampa indemne!");
         }
     }
 
     public int atacar() {
         return getAtq();
     }
-
-    /**
-     * todo hacer otro metodo pq soy retrasada mental jejejejejejejejejej
-     */
 
     public int defender(int dañoHecho, String tipoDaño) {
 

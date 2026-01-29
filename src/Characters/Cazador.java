@@ -58,15 +58,15 @@ public class Cazador extends Personaje {
 
     @Override
     public int atacar() {
-        return getAtq() + mascota.atacar();
+        return (getAtq() + mascota.atacar());
     }
 
     @Override
     public void ataqueCoquetudo(Personaje enemigo){
         System.out.println("\n" + this.getNombre() + " decide atacar a " + enemigo.getNombre() + ", y " + mascota.getNombre() + " se suma al ataque" + details(3) + "\n");
         printPerezita("\uD835\uDC74\uD835\uDC82\uD835\uDC94\uD835\uDC84\uD835\uDC90\uD835\uDC95\uD835\uDC8A\uD835\uDC95\uD835\uDC82 \uD835\uDC82\uD835\uDC8D \uD835\uDC82\uD835\uDC95\uD835\uDC82\uD835\uDC92\uD835\uDC96\uD835\uDC86..");
-        System.out.println(coquetoCM() + "\n" + this.getNombre() + " y " + mascota.getNombre() + " han realizado " + this.atacar() + " de daño a " + enemigo.getNombre() + "..");
-        enemigo.defender(this.atacar(), this.getTipoAtaque());
+        System.out.println(coquetoCM() + "\n" + this.getNombre() + " y " + mascota.getNombre() + " han realizado " + enemigo.defender(this.atacar(), this.getTipoAtaque()) + " de daño a " + enemigo.getNombre() + "..");
+        enemigo.defensa(this.atacar(), this.getTipoAtaque());
         printPv(enemigo);
     }
 
