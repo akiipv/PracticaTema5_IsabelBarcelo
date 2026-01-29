@@ -26,7 +26,7 @@ public abstract class Creyente extends Personaje{
     @Override
     public String toString() {
         String resultado = "Cargando datos del creyente.. ૮ ․ ․ ྀིა " +
-                "\n\t· Nombre: " + getNombre() + "" +
+                "\n\t· Nombre: " + getNombre() +
                 "\n\t· Vida: " + getPv() +
                 "\n\t· Ataque: " + getAtq() +
                 "\n\t· Armardura: " + getArm() +

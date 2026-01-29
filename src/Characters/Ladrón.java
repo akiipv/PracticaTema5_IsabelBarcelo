@@ -42,7 +42,6 @@ public class Ladrón extends Personaje{
         System.out.println(getNombre() + ", ¡ha subido de nivel!\n\t" + toString());
     }
 
-    /**todo terminar esto maldision*/
     public int Robar(Personaje enemigo) {
         System.out.println(coquetoL());
         System.out.println(getNombre() + " le ha robado a " + enemigo.getNombre() + "..");
@@ -59,12 +58,14 @@ public class Ladrón extends Personaje{
     @Override
     public String toString() {
         String resultado = "Cargando datos del ladrón.. ૮ ․ ․ ྀིა " +
-                "\n\t· Nombre: " + super.getNombre() + "" +
-                "\n\t· Vida: " + super.getPv() +
-                "\n\t· Ataque: " + super.getAtq() +
-                "\n\t· Armardura: " + super.getArm() +
-                "\n\t· Nivel: " + super.getNivel() +
-                "\n\t· Cantidad de robos realizados: " + robo;
+                "\n\t· Nombre: " + getNombre() +
+                "\n\t· Vida: " + getPv() +
+                "\n\t· Ataque: " + getAtq() +
+                "\n\t· Armadura: " + getArm() +
+                "\n\t· Velocidad: " + getVel() +
+                "\n\t· Resistencia mágica: " + getRes() +
+                "\n\t· Cantidad de robos realizados: " + getRobo() +
+                "\n\t· Nivel: " + getNivel();
         return coquetudo() + "\n\n" + resultado;
     }
 

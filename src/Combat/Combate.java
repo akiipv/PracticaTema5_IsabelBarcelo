@@ -23,6 +23,9 @@ public class Combate {
             primero = c1;
         }
 
+        primero.printPerezita(primero.toString());
+        segundo.printPerezita(segundo.toString());
+
         while (!primero.estaMuerto() && !segundo.estaMuerto()) {
             ronda++;
             System.out.println(dividerC());
@@ -80,7 +83,6 @@ public class Combate {
     public static void bucleCombate(Personaje ataca, Personaje recibe){
 
         int ataques = 1;
-        String tipo = ataca.getTipoAtaque();
 
         if (ataca.getVel() >= (recibe.getVel() * 2)){
             ataques++;
@@ -96,6 +98,6 @@ public class Combate {
     }
 
     public static String dividerC(){
-        return "\t────•⋅⊰༻♥༺⊱⋅•────";
+        return "\n\t────•⋅⊰༻♥༺⊱⋅•────";
     }
 }

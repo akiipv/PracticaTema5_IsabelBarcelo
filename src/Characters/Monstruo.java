@@ -91,7 +91,7 @@ public class Monstruo extends Personaje {
     @Override
     public String toString() {
         String resultado = "Cargando datos del monstruo.. ૮ ․ ․ ྀིა " +
-                "\n\t· Nombre: " + getNombre() + "" +
+                "\n\t· Nombre: " + getNombre() +
                 "\n\t· Vida: " + getPv() +
                 "\n\t· Ataque: " + getAtq() +
                 "\n\t· Armadura: " + getArm() +

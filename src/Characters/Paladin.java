@@ -41,29 +41,35 @@ public class Paladin extends Creyente{
     public void plegaria(Personaje enemigo) {
 
         int opcion;
+        int pleg;
         Scanner scan = new Scanner(System.in);
 
         System.out.println(coquetoP());
 
-        menusito("¿Qué tipo de conjuro quiere hacer?", new String[]{"Imbuir arma", "Baluarte de fe", "Fogonazo sagrado"}, 2);
-        opcion = scan.nextInt();
+        do {
+            menusito("¿Qué tipo de conjuro quiere hacer?", new String[]{"Imbuir arma", "Baluarte de fe", "Fogonazo sagrado"}, 2);
+            opcion = scan.nextInt();
 
-        switch (opcion){
-            case 1:
-                this.setAtq(getAtq() + (int)(getFe() * 0.8));
-                System.out.println(getNombre() + " comienza a " + anderlain("imbuir su arma" + " aumentando su ataque a " + this.getAtq()));
-                break;
-            case 2:
-                /**todo terminar este y el case 3*/
-                this.setArm(getArm() + (int)(getFe() * 0.3));
-                System.out.println(getNombre() + " aumenta su armadura con Baluarte de fe");
-                break;
-            case 3:
-                enemigo.setVel((int)(enemigo.getVel() - getFe() * 0.4));
-                enemigo.setRes((int)(enemigo.getRes() - getFe() * 0.4));
-                System.out.println(getNombre() + " lanza Fogonazo sagrado! " + enemigo.getNombre() + " ve reducida su velocidad y resistencia mágica.");
-                break;
-        }
+            switch (opcion){
+                case 1:
+                    pleg = (int)(getFe() * 0.8);
+                    this.setAtq(getAtq() + pleg);
+                    System.out.println(this.getNombre() + " comienza a " + anderlain("imbuir su arma") + " aumentando su ataque a " + pleg + " puntos..\n\t· Ataque: " + this.getAtq());
+                    break;
+                case 2:
+                    pleg = (int)(getFe() * 0.3);
+                    this.setArm(getArm() + pleg);
+                    System.out.println(this.getNombre() + " empieza a fortalecer su cuerpo con un " + anderlain("baluarte de fe") + " subiendo su armadura " + pleg + " puntos..\n\t· Armadura: " + this.getArm());
+                    break;
+                case 3:
+                    pleg = (int)(getFe() * 0.4);
+                    enemigo.setVel(enemigo.getVel() - pleg);
+                    enemigo.setRes(enemigo.getRes() - pleg);
+                    System.out.println(this.getNombre() + " lanza un " + anderlain("fogonazo sagrado") + " hacia " + enemigo.getNombre() + " cegándole, reduciendo así su velocidad y resistencia mágica " + pleg + " puntos..\n\t· Velocidad: " + enemigo.getVel() + "\n\t· Resistencia mágica: " +  enemigo.getRes());
+                    break;
+            }
+        } while (opcion > 4);
+
     }
 
     @Override
@@ -75,12 +81,14 @@ public class Paladin extends Creyente{
     @Override
     public String toString() {
         String resultado = "Cargando datos del paladín.. ૮ ․ ․ ྀིა " +
-                "\n\t· Nombre: " + super.getNombre() + "" +
-                "\n\t· Vida: " + super.getPv() +
-                "\n\t· Ataque: " + super.getAtq() +
-                "\n\t· Armardura: " + super.getArm() +
-                "\n\t· Nivel: " + super.getNivel() +
-                "\n\t· Puntos de fe " + super.getFe();
+                "\n\t· Nombre: " + getNombre() +
+                "\n\t· Vida: " + getPv() +
+                "\n\t· Ataque: " + getAtq() +
+                "\n\t· Armadura: " + getArm() +
+                "\n\t· Velocidad: " + getVel() +
+                "\n\t· Resistencia mágica: " + getRes() +
+                "\n\t· Puntos de fe " + getFe() +
+                "\n\t· Nivel: " + getNivel();
         return coquetudo() + "\n\n" + resultado;
     }
 

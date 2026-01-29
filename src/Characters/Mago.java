@@ -60,32 +60,36 @@ public class Mago extends Personaje {
 
         System.out.println(coquetoM());
 
-        menusito("¿Qué tipo de conjuro quiere hacer?", new String[]{"Bola de fuego", "Escudo arcano", "Céfiro", "Presteza mental"}, 2);
-        opcion = scan.nextInt();
+        do {
+            menusito("¿Qué tipo de conjuro quiere hacer?", new String[]{"Bola de fuego", "Escudo arcano", "Céfiro", "Presteza mental"}, 2);
+            opcion = scan.nextInt();
 
-        switch (opcion) {
-            case 1:
-                dañoConjuro = (int)(mag * 0.70);
-                enemigo.setPv(enemigo.getPv() - dañoConjuro);
-                System.out.println(this.getNombre() + " lanza \033[0;4mbola de fuego\033[0;0m y hace " + dañoConjuro + " de daño a " + enemigo.getNombre() + ". Dejándole a " + enemigo.getPv() + " de vida.." + details(2));
-                break;
-            case 2:
-                setArm(getArm() + (int)(mag * 0.5));
-                setRes(getRes() + (int)(mag * 0.5));
-                System.out.println("Un " + anderlain("escudo arcano") + " se manifiesta alrededor de " + this.getNombre() + ".. aumentando su resistencia mágica y su armadura.." + details(5) + "\n\t· Armadura: " + this.getArm() + "\n\t· Resistencia mágica: " + this.getRes() + "\n");
-                break;
-            case 3:
-                dañoConjuro = (int)(mag * 0.30);
-                enemigo.setPv(enemigo.getPv() - dañoConjuro);
-                System.out.println(this.getNombre() + " lanza " + anderlain("céfiro") + ", que se desata sobre " + enemigo.getNombre() + ".. causándole " + dañoConjuro + " de daño mágico.." + details(4));
-                printPv(enemigo);
-                break;
-            case 4:
-                 setVel(super.getVel() + mag);
-                System.out.println("La " + anderlain("presteza mental") + " de " + getNombre() + " le hace ganar velocidad.." + details(2));
-                break;
-        }
+            switch (opcion) {
+                case 1:
+                    dañoConjuro = (int)(mag * 0.70);
+                    enemigo.defensa(dañoConjuro, this.getTipoAtaque());
+                    System.out.println(this.getNombre() + " lanza \033[0;4mbola de fuego\033[0;0m y hace " + enemigo.defender(dañoConjuro, this.getTipoAtaque()) + " de daño a " + enemigo.getNombre() + details(2));
+                    printPv(enemigo);
+                    break;
+                case 2:
+                    setArm(getArm() + (int)(mag * 0.5));
+                    setRes(getRes() + (int)(mag * 0.5));
+                    System.out.println("Un " + anderlain("escudo arcano") + " se manifiesta alrededor de " + this.getNombre() + ".. aumentando su armadura y resistencia mágica.." + details(5) + "\n\t· Armadura: " + this.getArm() + "\n\t· Resistencia mágica: " + this.getRes() + "\n");
+                    break;
+                case 3:
+                    dañoConjuro = (int)(mag * 0.30);
+                    enemigo.defensa(dañoConjuro, this.getTipoAtaque());
+                    System.out.println(this.getNombre() + " lanza " + anderlain("céfiro") + ", que se desata sobre " + enemigo.getNombre() + ".. causándole " + enemigo.defender(dañoConjuro, this.getTipoAtaque()) + " de daño mágico.." + details(4));
+                    printPv(enemigo);
+                    break;
+                case 4:
+                    setVel(super.getVel() + mag);
+                    System.out.println("La " + anderlain("presteza mental") + " de " + getNombre() + " le hace ganar " + mag + " puntos de velocidad.." + details(2) + "\n\t· Velocidad: " + this.getVel());
+                    break;
+            }
+        } while (opcion > 4);
     }
+
 
     @Override
     public void accEspesial(Personaje enemigo) {
@@ -96,11 +100,13 @@ public class Mago extends Personaje {
     @Override
     public String toString() {
         String resultado = "Cargando datos del mago.. ૮ ․ ․ ྀིა " +
-                "\n\t· Nombre: " + super.getNombre() + "" +
-                "\n\t· Vida: " + super.getPv() +
-                "\n\t· Ataque: " + super.getAtq() +
-                "\n\t· Armardura: " + super.getArm() +
-                "\n\t· Nivel: " + super.getNivel() +
+                "\n\t· Nombre: " + getNombre() +
+                "\n\t· Vida: " + getPv() +
+                "\n\t· Ataque: " + getAtq() +
+                "\n\t· Armadura: " + getArm() +
+                "\n\t· Velocidad: " + getVel() +
+                "\n\t· Resistencia mágica: " + getRes() +
+                "\n\t· Nivel: " + getNivel() +
                 "\n\t· Puntos de magia: " + mag;
         return coquetudo() + "\n\n" + resultado;
     }

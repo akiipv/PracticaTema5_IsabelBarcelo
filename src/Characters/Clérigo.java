@@ -40,6 +40,7 @@ public class Clérigo extends Creyente{
     public void plegaria(Personaje objetivo) {
 
         int opcion;
+        int pleg;
         Scanner scan = new Scanner(System.in);
 
         System.out.println(coquetoC());
@@ -49,17 +50,23 @@ public class Clérigo extends Creyente{
 
         switch (opcion){
             case 1:
-                objetivo.setPv(getPv() + (int)(getFe() * 0.7));
-                System.out.println(getNombre() + anderlain("sana") + " con su fe a " +  objetivo.getNombre() + " dejándolo a " + objetivo.getPv() + " pts de vida.");
+                pleg = (int)(getFe() * 0.7);
+                objetivo.setPv(getPv() + pleg);
+                System.out.println(this.getNombre() + anderlain("sana") + " con su fe a " +  objetivo.getNombre() + " subiéndole la vida " + pleg + " puntos..");
+                printPv(objetivo);
                 break;
             case 2:
-                objetivo.setPv(getPv() + (int)(getFe() * 0.35));
-                System.out.println(getNombre() + " hace un " + anderlain("rezo sagrado") + " y sana con su fe a todo el equipo..");
+                pleg = (int)(getFe() * 0.35);
+                objetivo.setPv(getPv() + pleg);
+                System.out.println(this.getNombre() + " hace un " + anderlain("rezo sagrado") + " y sana " + pleg + " puntos con su fe a todo el equipo..");
+                printPv(objetivo);
                 break;
             case 3:
                 this.setTipoAtaque("magico");
-                objetivo.setPv(objetivo.getPv() - (int)(getFe() * 0.55));
-                System.out.println(getNombre() + " lanza " + anderlain("cólera divina") + ".. " + objetivo.getNombre() + " recibe daño de sangrado..");
+                pleg = (int)(getFe() * 0.55);
+                objetivo.defensa(pleg, this.getTipoAtaque());
+                System.out.println(this.getNombre() + " lanza " + anderlain("cólera divina") + ".. " + objetivo.getNombre() + " recibe " + objetivo.defender(pleg, this.getTipoAtaque()) + " puntos de daño de sangrado..");
+                printPv(objetivo);
                 break;
         }
     }
@@ -73,12 +80,14 @@ public class Clérigo extends Creyente{
     @Override
     public String toString() {
         String resultado = "Cargando datos del clérigo.. ૮ ․ ․ ྀིა " +
-                "\n\t· Nombre: " + super.getNombre() + "" +
-                "\n\t· Vida: " + super.getPv() +
-                "\n\t· Ataque: " + super.getAtq() +
-                "\n\t· Armardura: " + super.getArm() +
-                "\n\t· Nivel: " + super.getNivel() +
-                "\n\t· Puntos de fe " + super.getFe();
+                "\n\t· Nombre: " + getNombre() +
+                "\n\t· Vida: " + getPv() +
+                "\n\t· Ataque: " + getAtq() +
+                "\n\t· Armadura: " + getArm() +
+                "\n\t· Velocidad: " + getVel() +
+                "\n\t· Resistencia mágica: " + getRes() +
+                "\n\t· Puntos de fe " + getFe() +
+                "\n\t· Nivel: " + getNivel();
         return coquetudo() + "\n\n" + resultado;
     }
 

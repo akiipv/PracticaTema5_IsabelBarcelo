@@ -229,11 +229,13 @@ public abstract class Personaje {
 
     public String toString() {
         String resultado = "Cargando datos del personaje.. ૮ ․ ․ ྀིა " +
-                "\n\t· Nombre: " + nombre + "" +
-                "\n\t· Vida: " + pv +
-                "\n\t· Ataque: " + atq +
-                "\n\t· Armadura: " + arm +
-                "\n\t· Nivel: " + nivel;
+                "\n\t· Nombre: " + getNombre() +
+                "\n\t· Vida: " + getPv() +
+                "\n\t· Ataque: " + getAtq() +
+                "\n\t· Armadura: " + getArm() +
+                "\n\t· Velocidad: " + getVel() +
+                "\n\t· Resistencia mágica: " + getRes() +
+                "\n\t· Nivel: " + getNivel();
         return coquetudo() + "\n\n" + resultado;
     }
 
@@ -279,18 +281,21 @@ public abstract class Personaje {
 
         switch (tipoDaño) {
             case "fisico":
-                dañoRecibido = dañoHecho - arm;
+                dañoRecibido = dañoHecho - getArm();
                 if (dañoRecibido < 0)
                     dañoRecibido = 0;
                 break;
             case "magico":
-                dañoRecibido = dañoHecho - res;
+                dañoRecibido = dañoHecho - getRes();
                 if (dañoRecibido < 0)
                     dañoRecibido = 0;
         }
 
-        this.setPv(this.getPv() - dañoRecibido);
         return dañoRecibido;
+    }
+
+    public void defensa(int dañoHecho, String tipoDaño) {
+        this.setPv(this.getPv() - this.defender(dañoHecho, tipoDaño));
     }
 
     public void printPv(Personaje player){
@@ -308,16 +313,12 @@ public abstract class Personaje {
     public void defensaDown(){
             setArm((int) (getArm() * 0.8));
             setRes((int) (getRes() * 0.8));
-            System.out.println(getNombre() + " se relaja.. \nSus stats vuelven a la normalidad" + details(4) + ":\n\t· Armadura: " + getArm() + "\n\t· Resistencia: " + getRes());
+            System.out.println("\n" + getNombre() + " se relaja.. \nSus stats vuelven a la normalidad" + details(4) + ":\n\t· Armadura: " + getArm() + "\n\t· Resistencia: " + getRes());
     }
 
     public void accEspesial(Personaje enemigo) {
         System.out.println("Acción especial no implementada.." + details(4));
     }
-
-    /**
-     * todo pensaba q lo habia terminao, ella jura💜 m falta el defender, maldisionnnnnnnnnnnn
-     */
 
     public void realizarTurno(Personaje enemigo) {
         int opcion;
@@ -331,32 +332,33 @@ public abstract class Personaje {
 
         Scanner scan = new Scanner(System.in);
 
-        menusito("¿Qué acción quiere realizar?", new String[]{"Atacar", "Acción Especial", "Defender", "Pasar turno"}, 0);
-        opcion = scan.nextInt();
+        do {
+            menusito("¿Qué acción quiere realizar?", new String[]{"Atacar", "Acción Especial", "Defender", "Pasar turno"}, 0);
+            opcion = scan.nextInt();
 
-        switch (opcion) {
-            case 1:
-                this.ataqueCoquetudo(enemigo);
-                break;
-            case 2:
-                this.accEspesial(enemigo);
-                break;
-            case 3:
+            switch (opcion) {
+                case 1:
+                    this.ataqueCoquetudo(enemigo);
+                    break;
+                case 2:
+                    this.accEspesial(enemigo);
+                    break;
+                case 3:
                     this.defensaUppie();
-                break;
-            case 4:
-                System.out.println("\n" + getNombre() + " decide pasar el turno.." + details(4));
-                break;
-            default:
-                System.out.println("Opción no válida.");
-        }
-
+                    break;
+                case 4:
+                    System.out.println("\n" + getNombre() + " decide pasar el turno.." + details(4));
+                    break;
+            }
+        } while (opcion > 4);
     }
 
-    //cambiar esto pq el daño q pone en verda no e el que hace am
     public void ataqueCoquetudo(Personaje enemigo){
-        System.out.println("\n" + this.getNombre() + " decide atacar a " + enemigo.getNombre() + " haciéndole " + this.atacar() + " de daño.." + details(5));
-        enemigo.defender(this.atacar(), this.getTipoAtaque());
+        int dañito = enemigo.defender(this.atacar(), this.getTipoAtaque());
+        if (dañito <= 0)
+            System.out.println("\n" + this.getNombre() + " decide atacar a " + enemigo.getNombre() + " pero no le hace ni cosquillas.." + details(4));
+        else System.out.println("\n" + this.getNombre() + " decide atacar a " + enemigo.getNombre() + " haciéndole " + dañito + " de daño.." + details(5));
+        enemigo.defensa(this.atacar(), this.getTipoAtaque());
         printPv(enemigo);
     }
 
@@ -378,6 +380,8 @@ public abstract class Personaje {
 
         printDetallito();
     }
+
+    // A partir de aquí, son solo métodos de decoración, am sori
 
     public  String coquetudo(){
         return "⠀⠀⠀⠀⠀⠀⠀⠀⡤⠤⠤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⣀⣠⡤⠤⢤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
