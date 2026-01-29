@@ -309,6 +309,7 @@ public abstract class Personaje {
 
     public void accEspesial(Personaje enemigo) {
         System.out.println("Acción especial no implementada.." + details(4));
+        this.realizarTurno(enemigo);
     }
 
     public void realizarTurno(Personaje enemigo) {
