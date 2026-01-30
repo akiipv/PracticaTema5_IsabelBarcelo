@@ -55,7 +55,7 @@ public class Coquette extends Personaje {
         System.out.println(coquetoCQ());
 
         do {
-            menusito("¿Qué tipo de conjuro quiere hacer?", new String[]{"Robar corazón", "Mandar besitos", "Admirarse en un espejo", "No, yo más"}, 2);
+            menusito("¿Qué tipo de conjuro quiere hacer?", new String[]{"Robar corazón", "Mandar besitos", "Admirarse en un espejo", "No, yo más", "Volver al menú principal"}, 2);
             opcion = scan.nextInt();
 
             switch (opcion) {
@@ -67,8 +67,9 @@ public class Coquette extends Personaje {
                     printPv(enemigo);
                     break;
                 case 2:
-                    setRes(getRes() + (int) (coqueteria * 0.85));
-                    System.out.println(this.getNombre() + " le " + anderlain("manda besitos") + " a " + enemigo.getNombre() + ".. bajándole la resistencia mágica con su coquetería.." + details(5) + "\n\t· Resistencia mágica: " + this.getRes());
+                    dañoCoquette = (int) (coqueteria * 0.85);
+                    enemigo.setRes(getRes() - dañoCoquette);
+                    System.out.println(this.getNombre() + " le " + anderlain("manda besitos") + " a " + enemigo.getNombre() + ".. bajándole la resistencia mágica con su coquetería.." + details(5) + "\n\t· Resistencia mágica: " + enemigo.getRes());
                     break;
                 case 3:
                     dañoCoquette = (int) (coqueteria * 0.90);
@@ -80,8 +81,12 @@ public class Coquette extends Personaje {
                     enemigo.defensa(dañoCoquette, this.getTipoAtaque());
                     System.out.println(this.getNombre() + " ama más a " + enemigo.getNombre() + " por lo que hace el doble de daño que él.." + details(2));
                     printPv(enemigo);
+                    break;
+                case 5:
+                    realizarTurno(enemigo);
+                    break;
             }
-        } while (opcion > 4);
+        } while (opcion > 5);
     }
 
     @Override

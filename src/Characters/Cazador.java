@@ -51,6 +51,8 @@ public class Cazador extends Personaje {
                 "\n\t· Vida: " + getPv() +
                 "\n\t· Ataque: " + getAtq() +
                 "\n\t· Armardura: " + getArm() +
+                "\n\t· Velocidad: " + getVel() +
+                "\n\t· Resistencia mágica: " + getRes() +
                 "\n\t· Nivel: " + getNivel() +
                 "\n\t\t" + mascota.toString();
         return coquetudo() + "\n\n" + resultado;
@@ -132,6 +134,8 @@ public class Cazador extends Personaje {
                     "\n\t· Vida: " + getPv() +
                     "\n\t· Ataque: " + getAtq() +
                     "\n\t· Armardura: " + getArm() +
+                    "\n\t· Velocidad: " + getVel() +
+                    "\n\t· Resistencia mágica: " + getRes() +
                     "\n\t· Nivel: " + getNivel();
             return coquetudo() + "\n\n" + resultado;
         }

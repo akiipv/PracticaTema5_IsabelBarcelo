@@ -76,7 +76,7 @@ public class Guerrero extends Personaje {
 
         switch (tipoDaño) {
             case "fisico":
-                dañoRecibido = dañoHecho - super.getArm();
+                dañoRecibido = dañoHecho - getArm();
                 if (dañoRecibido < 0)
                     dañoRecibido = 0;
 
@@ -84,12 +84,13 @@ public class Guerrero extends Personaje {
                     dañoRecibido *= 2;
                 break;
             case "magico":
-                dañoRecibido = dañoHecho - super.getRes();
+                dañoRecibido = dañoHecho - getRes();
                 if (dañoRecibido < 0)
                     dañoRecibido = 0;
 
                 if (isFuria())
                     dañoRecibido *= 2;
+                break;
         }
 
         return dañoRecibido;
@@ -124,7 +125,7 @@ public class Guerrero extends Personaje {
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n";
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀";
     }
 
 }

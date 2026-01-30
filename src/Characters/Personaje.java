@@ -77,7 +77,9 @@ public abstract class Personaje {
     }
 
     public void setRes(int res) {
-        this.res = res;
+        if (res <= 0)
+            this.res = 0;
+        else this.res = res;
     }
 
     public int getVel() {
@@ -85,7 +87,9 @@ public abstract class Personaje {
     }
 
     public void setVel(int vel) {
-        this.vel = vel;
+        if (vel <= 0)
+            this.vel = 0;
+        else this.vel = vel;
     }
 
     public void setNombre(String nombre) {
@@ -250,7 +254,7 @@ public abstract class Personaje {
                     break;
                 case "Brea":
                     setArm(getArm() - perjuicioT);
-                    System.out.println("\n\t" + anderlain("Aceite viscoso") + " cae sobre " + getNombre() + ", arruinando su armadura..\n\t· Armadura: " + getArm()+ "\n");
+                    System.out.println("\n\t" + anderlain("Aceite viscoso") + " cae sobre " + getNombre() + ", arruinando su armadura..\n\t· Armadura: " + getArm() + "\n");
                     break;
                 case "Serpientes":
                     setAtq(getAtq() - perjuicioT);
@@ -298,17 +302,17 @@ public abstract class Personaje {
 
         setArm(getArm() + ((int) (getArm() * 0.2)));
         setRes(getRes() + ((int) (getRes() * 0.2)));
-        System.out.println(getNombre() + " adopta una postura defensiva.. \nSus stats mejoran" + details(5) + ":\n\t· Armadura: " + getArm() + "\n\t· Resistencia: " + getRes());
+        System.out.println(getNombre() + " adopta una postura defensiva.. \nSus stats mejoran" + details(5) + "\n\t· Armadura: " + getArm() + "\n\t· Resistencia: " + getRes());
     }
 
     public void defensaDown() {
         setArm((int) (getArm() * 0.8));
         setRes((int) (getRes() * 0.8));
-        System.out.println("\n" + getNombre() + " se relaja.. \nSus stats vuelven a la normalidad" + details(4) + ":\n\t· Armadura: " + getArm() + "\n\t· Resistencia: " + getRes());
+        System.out.println("\n" + getNombre() + " se relaja.. \nSus stats vuelven a la normalidad, pero aumenta su cansancio" + details(4) + "\n\t· Armadura: " + getArm() + "\n\t· Resistencia: " + getRes());
     }
 
     public void accEspesial(Personaje enemigo) {
-        System.out.println("Acción especial no implementada.." + details(4));
+        System.out.println("Este personaje no tiene acción especial.." + details(4));
         this.realizarTurno(enemigo);
     }
 
