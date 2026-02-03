@@ -4,6 +4,7 @@ package Characters;
  * Clase abstracta Creyente.
  * Representa un personaje que puede realizar milagros mediante plegarias.
  * Los tipos de milagros dependen de la subclase específica.
+ * @author Isa Barceló
  */
 
 public abstract class Creyente extends Personaje {

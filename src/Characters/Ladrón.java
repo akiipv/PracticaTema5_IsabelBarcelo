@@ -5,6 +5,7 @@ package Characters;
  * Representa un tipo de Personaje especializado en velocidad y ataques
  * estratégicos, con la habilidad especial de robar.
  * Al usar la acción especial, golpea con su velocidad en lugar de ataque.
+ * @author Isa Barceló
  */
 
 public class Ladrón extends Personaje {

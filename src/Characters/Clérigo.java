@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Subclase Clérigo.
  * Representa un tipo de Creyente que combate a distancia y sana a sus aliados,
  * con habilidades especiales basadas en sus puntos de fe.
+ * @author Isa Barceló
  */
 
 public class Clérigo extends Creyente {

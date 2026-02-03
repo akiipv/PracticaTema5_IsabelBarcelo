@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Subclase Paladín.
  * Representa un tipo de Creyente especializado en combate cuerpo a cuerpo,
  * capaz de realizar milagros con su fe.
+ * @author Isa Barceló
  */
 
 public class Paladin extends Creyente {

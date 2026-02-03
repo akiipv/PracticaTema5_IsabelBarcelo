@@ -7,6 +7,7 @@ import java.util.Random;
  * Representa un tipo de Personaje especializado en velocidad y en el uso
  * de un Compañero Animal que comparte parcialmente sus estadísticas
  * y participa en los ataques.
+ * @author Isa Barceló
  */
 
 public class Cazador extends Personaje {

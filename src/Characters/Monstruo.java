@@ -15,6 +15,8 @@ import java.util.Random;
  *   10% para velocidad y resistencia mágica, sin modificar armadura.
  *
  * Hereda de Personaje.
+ *
+ * @author Isa Barceló
  */
 
 public class Monstruo extends Personaje {

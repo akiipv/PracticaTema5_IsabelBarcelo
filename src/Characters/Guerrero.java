@@ -10,6 +10,7 @@ import java.util.Random;
  *
  * El Guerrero dispone del estado especial "furia", que incrementa
  * temporalmente su ataque a costa de recibir más daño al defenderse.
+ * @author Isa Barceló
  */
 
 public class Guerrero extends Personaje {

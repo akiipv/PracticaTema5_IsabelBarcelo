@@ -9,6 +9,7 @@ import java.util.Random;
  * Gestiona el sistema de combate por turnos entre dos personajes.
  * El orden de actuación se determina por la velocidad (vel) y se
  * contemplan turnos dobles si un personaje duplica la velocidad del otro.
+ * @author Isa Barceló
  */
 
 public class Combate {

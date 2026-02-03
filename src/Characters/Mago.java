@@ -10,6 +10,7 @@ import java.util.Scanner;
  *
  * El Mago dispone de puntos de magia (mag) que determinan la potencia
  * de sus hechizos.
+ * @author Isa Barceló
  */
 
 public class Mago extends Personaje {
