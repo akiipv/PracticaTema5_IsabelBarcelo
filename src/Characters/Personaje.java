@@ -8,6 +8,8 @@ import GameMap.Trampa;
 /**
  * Clase abstracta que representa un personaje del juego.
  * Contiene las estadísticas básicas, lógica de combate y control de turnos.
+ * @author Isa Barceló
+ * @version 200.0
  */
 
 public abstract class Personaje {
