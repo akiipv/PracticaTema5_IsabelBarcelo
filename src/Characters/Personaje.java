@@ -1,9 +1,11 @@
 package Characters;
 
+import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
 import GameMap.Trampa;
+
 
 /**
  * Clase abstracta que representa un personaje del juego.
@@ -12,7 +14,7 @@ import GameMap.Trampa;
  * @version 200.0
  */
 
-public abstract class Personaje {
+public abstract class Personaje implements Comparable {
 
     private String nombre, tipoAtaque;
     private int pv, atq, arm, nivel, res, vel;
@@ -696,6 +698,15 @@ public abstract class Personaje {
 
     public String anderlain(String opcion) {
         return "\033[0;4m" + opcion + "\033[0;0m";
+    }
+
+    //
+
+    /**todo no entiendo*/
+    public int compareTo(Personaje player) {
+        if (this.getVel() < player.getVel())
+            return 1;
+        else return 0;
     }
 }
 

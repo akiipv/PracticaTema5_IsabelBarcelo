@@ -28,7 +28,9 @@ public class GameLogger {
     }
 
     public static void sortArrayito(Personaje[] player) throws IOException {
+        for (Personaje p : player){
 
+        }
     }
 
 }
