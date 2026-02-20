@@ -182,16 +182,15 @@ public class Monstruo extends Personaje {
     }
 
     @Override
-    public String toString2() {
-        String resultado = "\n\t· Nombre: " + getNombre() +
-                "\n\t· Raza: " + getRaza() +
-                "\n\t· Vida: " + getPv() +
-                "\n\t· Ataque: " + getAtq() +
-                "\n\t· Armardura: " + getArm() +
-                "\n\t· Velocidad: " + getVel() +
-                "\n\t· Resistencia mágica: " + getRes() +
-                "\n\t· Nivel: " + getNivel() +
-                "\n\t\t૮ ․ ․ ྀིა";
-        return coquetudo() + "\n\n" + resultado;
+    public String cartita() {
+        return "₊˚ ‿︵‿︵‿︵୨୧ · · ♡ · · ୨୧‿︵‿︵‿︵ ˚₊\n" +
+                "\n· Nombre: "  + getNombre() +
+                "\n   · Raza: " + getRaza() +
+                "\n   · Vida: " + getPv() +
+                "\n   · Ataque: " + getAtq() +
+                "\n   · Armadura: " + getArm() +
+                "\n   · Velocidad: " + getVel() +
+                "\n   · Resistencia mágica: " + getRes() +
+                "\n   · Nivel: " + getNivel();
     }
 }

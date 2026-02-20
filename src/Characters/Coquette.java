@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class Coquette extends Personaje {
     private int coqueteria;
 
+    /**todo 47 cm ataque -arm
+     * todo añadir atributo género*/
+
     public Coquette() {
         super();
         coqueteria = 0;

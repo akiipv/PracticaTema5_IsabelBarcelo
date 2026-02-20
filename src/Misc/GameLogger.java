@@ -13,18 +13,17 @@ public class GameLogger {
         BufferedWriter bw = new BufferedWriter(new FileWriter("./" + player.getNombre() + ".txt"));
 
         bw.newLine();
-        bw.write(player.toString2());
+        bw.write(player.cartita());
         bw.close();
     }
 
     public static void cardIB(Personaje[] player) throws IOException {
-
         // for (Personaje p : player)
         for (int i = 0; i < player.length; i++) {
             BufferedWriter bw = new BufferedWriter(new FileWriter("./" + player[i].getNombre() + ".txt"));
 
             bw.newLine();
-            bw.write(player[i].toString2());
+            bw.write(player[i].cartita());
             bw.close();
         }
     }

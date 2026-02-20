@@ -9,6 +9,7 @@ import GameMap.Trampa;
 /**
  * Clase abstracta que representa un personaje del juego.
  * Contiene las estadísticas básicas, lógica de combate y control de turnos.
+ *
  * @author Isa Barceló
  * @version 200.0
  */
@@ -36,12 +37,12 @@ public abstract class Personaje implements Comparable<Personaje> {
      * Constructor por parámetros.
      *
      * @param nombre Nombre del personaje
-     * @param pv Puntos de vida
-     * @param atq Ataque
-     * @param arm Armadura (defensa física)
-     * @param nivel Nivel del personaje
-     * @param vel Velocidad del personaje
-     * @param res Resistencia mágica
+     * @param pv     Puntos de vida
+     * @param atq    Ataque
+     * @param arm    Armadura (defensa física)
+     * @param nivel  Nivel del personaje
+     * @param vel    Velocidad del personaje
+     * @param res    Resistencia mágica
      */
 
     public Personaje(String nombre, int pv, int atq, int arm, int nivel, int vel, int res) {
@@ -56,14 +57,21 @@ public abstract class Personaje implements Comparable<Personaje> {
         setDef(false);
     }
 
-    /**todo terminar cuando iván explique más porque realmente no sé qué estoy haciendo jeje*/
+    /**
+     * todo terminar cuando iván explique más porque realmente no sé qué estoy haciendo jeje
+     */
 
     public Personaje(File file) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(file.getPath()));
+        BufferedReader br = new BufferedReader(new FileReader(file));
+
+        for (int i = 0; i < 3; i++) {
+            br.readLine();
+        }
 
         String linea;
-        while((linea = br.readLine()) != null){
+        while ((linea = br.readLine()) != null) {
             System.out.println(linea);
+            /**todo reflexionar sobre cmo usar el split pa hacer lo que pide ivan*/
         }
         br.close();
     }
@@ -307,7 +315,7 @@ public abstract class Personaje implements Comparable<Personaje> {
      * Incrementa temporalmente una estadística.
      *
      * @param cantidad cantidad a aumentar
-     * @param tipo tipo de estadística
+     * @param tipo     tipo de estadística
      */
 
     public void inspirar(int cantidad, String tipo) {
@@ -417,16 +425,15 @@ public abstract class Personaje implements Comparable<Personaje> {
         return coquetudo() + "\n\n" + resultado;
     }
 
-    public String toString2() {
-        String resultado = "\n\t· Nombre: " + getNombre() +
-                "\n\t· Vida: " + getPv() +
-                "\n\t· Ataque: " + getAtq() +
-                "\n\t· Armadura: " + getArm() +
-                "\n\t· Velocidad: " + getVel() +
-                "\n\t· Resistencia mágica: " + getRes() +
-                "\n\t· Nivel: " + getNivel() +
-                "\n\t\t૮ ․ ․ ྀིა";
-        return coquetudo() + "\n\n" + resultado;
+    public String cartita() {
+        return "₊˚ ‿︵‿︵‿︵୨୧ · · ♡ · · ୨୧‿︵‿︵‿︵ ˚₊\n" +
+                "\n· Nombre: "  + getNombre() +
+                "\n   · Vida: " + getPv() +
+                "\n   · Ataque: " + getAtq() +
+                "\n   · Armadura: " + getArm() +
+                "\n   · Velocidad: " + getVel() +
+                "\n   · Resistencia mágica: " + getRes() +
+                "\n   · Nivel: " + getNivel();
     }
 
     /**
@@ -476,7 +483,7 @@ public abstract class Personaje implements Comparable<Personaje> {
      * Calcula el daño recibido según el tipo de daño.
      *
      * @param dañoHecho daño infligido
-     * @param tipoDaño tipo de daño (físico o mágico)
+     * @param tipoDaño  tipo de daño (físico o mágico)
      * @return daño recibido
      */
 
@@ -503,7 +510,7 @@ public abstract class Personaje implements Comparable<Personaje> {
      * Aplica el daño recibido al personaje.
      *
      * @param dañoHecho daño infligido
-     * @param tipoDaño tipo de daño
+     * @param tipoDaño  tipo de daño
      */
 
     public void defensa(int dañoHecho, String tipoDaño) {
@@ -630,9 +637,9 @@ public abstract class Personaje implements Comparable<Personaje> {
     /**
      * Muestra un menú de opciones.
      *
-     * @param mensaje mensaje principal
+     * @param mensaje  mensaje principal
      * @param opciones opciones disponibles
-     * @param detail nivel de detalle visual
+     * @param detail   nivel de detalle visual
      */
 
     public void menusito(String mensaje, String[] opciones, int detail) {
